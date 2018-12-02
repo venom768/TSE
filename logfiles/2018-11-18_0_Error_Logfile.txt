@@ -1,0 +1,127 @@
+ERROR_NUMBER = 10
+DB_ERRNO = 1044
+DB_ERROR = Access denied for user ''@'localhost' to database 'tse_db'
+SQL_QUERY = NONE
+TIME = 1542544115
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = GET
+PAGE = /tse/main.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 49
+DB_ERRNO = NO_ERROR
+DB_ERROR = NO_ERROR
+SQL_QUERY = NONE
+TIME = 1542544274
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = GET
+PAGE = /tse/main.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 10
+DB_ERRNO = 1044
+DB_ERROR = Access denied for user ''@'localhost' to database 'tse_db'
+SQL_QUERY = NONE
+TIME = 1542544274
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = GET
+PAGE = /tse/main.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 20
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = SELECT user_ID FROM tse_user WHERE user_email=? AND user_password=?
+TIME = 1542546081
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 20
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = SELECT user_ID FROM tse_user WHERE user_email=? AND user_password=?
+TIME = 1542546088
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 22
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_last_login='2018-11-18T14:11:38+00:00' WHERE user_ID =?
+TIME = 1542550298
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 22
+ERROR_DESC = Datum setzen war nicht erfolgreich!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_last_login='2018-11-18T14:36:52+00:00' WHERE user_ID =?
+TIME = 1542551812
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 22
+ERROR_DESC = Datum setzen war nicht erfolgreich!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_last_login='2018-11-18T14:41:13+00:00' WHERE user_ID =?
+DATE = 2018-11-18T14:41:13+00:00
+TIME = 1542552073
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 22
+ERROR_DESC = Datum setzen war nicht erfolgreich!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_last_login='2018-11-18T14:59:21+00:00' WHERE user_ID =?
+DATE = 2018-11-18T14:59:21+00:00
+TIME = 1542553161
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+
+ERROR_NUMBER = 22
+ERROR_DESC = Datum setzen war nicht erfolgreich!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_last_login='2018-11-18T15:06:57+00:00' WHERE user_ID =?
+DATE = 2018-11-18T15:06:57+00:00
+TIME = 1542553617
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/index.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36
+

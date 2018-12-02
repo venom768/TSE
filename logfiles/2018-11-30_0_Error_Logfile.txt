@@ -1,0 +1,168 @@
+ERROR_NUMBER = 35
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T14:28:34+00:00
+TIME = 1543588114
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T14:30:39+00:00
+TIME = 1543588239
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T14:33:23+00:00
+TIME = 1543588403
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:39:57+00:00
+TIME = 1543592397
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:40:46+00:00
+TIME = 1543592446
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:42:01+00:00
+TIME = 1543592521
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:46:22+00:00
+TIME = 1543592782
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:48:04+00:00
+TIME = 1543592884
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:48:15+00:00
+TIME = 1543592895
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:49:32+00:00
+TIME = 1543592972
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T15:51:12+00:00
+TIME = 1543593072
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 35
+ERROR_DESC = Execute fehlgeschlagen!
+DB_ERRNO = 
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?
+DATE = 2018-11-30T16:02:34+00:00
+TIME = 1543593754
+SESSION_IP = 
+REMOTE_ADDR = 127.0.0.1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_recovery.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+

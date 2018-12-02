@@ -1,0 +1,56 @@
+ERROR_NUMBER = 39
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 0
+DB_ERROR = 
+SQL_QUERY = DELETE password_code, password_time FROM tse_user WHERE user_email =?
+DATE = 2018-12-02T15:16:37+00:00
+TIME = 1543763797
+SESSION_IP = 
+REMOTE_ADDR = ::1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_renew.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 38
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 0
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_password=? WHERE user_email=? AND password_code=?
+DATE = 2018-12-02T15:33:04+00:00
+TIME = 1543764784
+SESSION_IP = 
+REMOTE_ADDR = ::1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_renew.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 38
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 0
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_password=? WHERE user_email=? AND password_code=?
+DATE = 2018-12-02T15:52:37+00:00
+TIME = 1543765957
+SESSION_IP = 
+REMOTE_ADDR = ::1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_renew.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
+ERROR_NUMBER = 38
+ERROR_DESC = Prepare fehlgeschlagen!
+DB_ERRNO = 0
+DB_ERROR = 
+SQL_QUERY = UPDATE tse_user SET user_password=? WHERE user_email=? AND password_code=?
+DATE = 2018-12-02T15:53:22+00:00
+TIME = 1543766002
+SESSION_IP = 
+REMOTE_ADDR = ::1
+USER_ID = 
+REQUEST_METHOD = POST
+PAGE = /tse/pw_renew.php
+BROWSER = Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36
+
