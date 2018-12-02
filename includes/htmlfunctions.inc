@@ -108,7 +108,7 @@ EOT;
 
 
 /* ***************************************************************************************************************
-  eventlist( array $Get_Data_for_Contacts )
+  Contactlist( array $Get_Data_for_Contacts )
 
   @brief 		  	Erstellt eine Tabelle mit den Admins und Lagerverwaltern als Ansprechpartner
 
@@ -147,6 +147,29 @@ EOT;
 	   // Das Tabellenende
 	echo
 	"</table>";
+
+}
+
+
+/* ***************************************************************************************************************
+  companylist( array $Get_Data_for_Company )
+
+  @brief 		  	Erstellt eine Tabelle mit der Firmenadresse
+
+  @function 		Erstellt eine Dynamische Tabelle 
+
+  @param 		  	$Get_Data_for_Company ein array mit dem Firmenadressen Datensatz
+					
+
+**************************************************************************************************************** */
+
+function CompanyList( $data_for_companyadress )
+{
+	echo <<<EOT
+			  	<p>{$data_for_companyadress['pos_companyname']}</p>
+				<p>{$data_for_companyadress['pos_adress']}</p>
+				<p>{$data_for_companyadress['pos_plz']} {$data_for_companyadress['pos_place']}</p>
+EOT;
 
 }
 
@@ -199,7 +222,7 @@ function OverviewDevices( $device_data_overviewdevices )
 				<td>{$device['device_equipment']}</td>
 				<td>{$device['device_wk_date']}</td>
 				<td>{$device['user_firstname']} {$device['user_lastname']}</td>
-				<td>{$device['pos_address']} {$device['pos_plz']}</td>
+				<td>{$device['pos_companyname']} {$device['pos_address']} {$device['pos_plz']} {$device['pos_place']}</td>
 			  </tr>
 EOT;
 		}
@@ -476,4 +499,5 @@ echo <<<EOT
 EOT;
 
 }
+
 ?>

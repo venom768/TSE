@@ -103,9 +103,7 @@ function Login( $db )
 			if($user_ID !== false && $user_group !== false)
 			{
 				// Zeitstempel für den letzten erfolgreichen Loginversuch setzen
-				SetLoginTimeByUserID( $db, $user_ID );
-				// Passwort- Code und Zeitstempel zurücksetzen
-				DeletePasswordCodeAndTime( $db, $email );
+				SetLoginTimeByUserID($db, $user_ID);
 			
 				// Session initialisieren
 				$_SESSION['email'] = $email; 										// E-Mail Adresse in Session übergeben
@@ -167,13 +165,17 @@ function CheckLogin( $db )
 					$device_data_overviewusers = GetDataForOverviewUsers($db);
 					// Datensätze aus der Datenbank holen für die Ansprechpartner
 					$data_for_contacts = GetDataForContacts($db);
+					// Datensätze aus der Datenbank holen für die Firmenadresse
+					$data_for_companyadress = GetAdress($db,0);
 					
 					// Daten in die Session übergeben
 					$_SESSION['device_data_wklist'] = $device_data_wklist;					
 					$_SESSION['device_data_eventlist'] = $device_data_eventlist;		
 					$_SESSION['device_data_overviewdevices'] = $device_data_overviewdevices;
 					$_SESSION['device_data_overviewusers'] = $device_data_overviewusers;
-					$_SESSION['data_for_contacts'] = $data_for_contacts;	
+					$_SESSION['data_for_contacts'] = $data_for_contacts;
+					$_SESSION['data_for_companyadress'] = $data_for_companyadress;
+					
 				}
 				else
 				{
@@ -229,7 +231,8 @@ CheckLogout()
 @function	Überprüft ob das Hidden Feld im Logout Formular über $_POST gesendet wurde
 			Zusätzlich wird verhindert das die index.php im eingeloggten Zustand aufgerufen werden kann
 			Dazu wird überprüft ob bereits eine E-Mail Adresse in der Session gespeichert ist
-			Wenn ein User den Logout-Button betätigt hat, dann wird die Session beendet
+
+@function	Wenn ein User den Logout-Button betätigt hat, dann wird die Session beendet
 			Dazu wird die Funktion Logout() verwendeten
 			Ist ein User eingeloggt und versucht die index.php aufzurufen, wird er auf die main.php zurück geleitet
 
@@ -605,13 +608,7 @@ function ErrorByNumber( $error )
 	case 117: 	$desc 	= "<div id=\"error_115\">Passwort erfolgreich geändert.</div>";
 	break;
 	
-	case 118: 	$desc 	= "<div id=\"error_115\">Passwort zurücksetzen fehlgeschlagen. Bitte versuchen Sie es erneut.</div>";
-	break;
-	
-	case 119: 	$desc 	= "<div id=\"error_115\">Der Link zum Zurücksetzen des Passworts ist abgelaufen.</div>";
-	break;
-	
-	case 200: 	$desc 	= "<div id=\"error_200\">Es ist ein unbekannter Fehler auf der Webseite aufgetreten. Bitte versuchen Sie es erneut.</div>";
+	case 200: 	$desc 	= "<div id=\"error_200\">Es ist ein unbekannter Fehler auf der Webseite aufgetreten, bitte versuchen Sie es erneut.</div>";
 	break;
 	
 	default:	$desc 	= "<div id=\"error_999\">Unbekannter Fehler aufgetreten.</div>";
@@ -673,7 +670,7 @@ CreateErrorLogfile( $InternalError, $db_errno, $db_error, $sql_query )
 					36				DeleteUser							--> Fehlerhafte Datenbankabfrage
 					37				CheckUserEmail						--> Fehlerhafte Datenbankabfrage
 					38				UpdateUserPasswordByPasswordCode	--> Fehlerhafte Datenbankabfrage
-					39				DeletePasswordCodeAndTime			--> Fehlerhafte Datenbankabfrage
+					39				UpdateAdress						--> Fehlerhafte Datenbankabfrage
 					
 					48				dbconnect							--> Verbindungsversuch ohne Username und Passwort
 					49				dbconnect							--> Verbindungsversuch mit nicht existierendem User 'root'

@@ -356,7 +356,7 @@ function GetDataForEventlist($db)
 function GetDataForOverviewDevices($db)
 {
 	// alles relevanten Daten aus den Tabllen via Join holen
-	$sql	=	"SELECT device_ID,device_qr_code,device_sn,device_defects,device_equipment,device_status,device_wk_date,tse_position.pos_address,tse_position.pos_plz,tse_user.user_firstname,tse_user.user_lastname,upperclass.upperclass_description,underclass.underclass_description,model.modeldescription ".
+	$sql	=	"SELECT device_ID,device_qr_code,device_sn,device_defects,device_equipment,device_status,device_wk_date,tse_position.pos_companyname,tse_position.pos_address,tse_position.pos_plz,tse_position.pos_place,tse_user.user_firstname,tse_user.user_lastname,upperclass.upperclass_description,underclass.underclass_description,model.modeldescription ".
 				"FROM device ".
 	            "INNER JOIN tse_position ON (device.pos_ID = tse_position.pos_ID) ".
                 "INNER JOIN tse_user ON (device.user_ID = tse_user.user_ID) ".
@@ -399,8 +399,8 @@ function GetDataForOverviewUsers($db)
 	$sql	=	"SELECT user_ID,user_salutation,user_firstname,user_lastname,user_title,user_email,user_telnr, user_create_stamp, user_last_login,user_status,tse_group.group_description ".
 				"FROM tse_user ".
 	            "INNER JOIN tse_group ON (tse_user.user_group_ID = tse_group.group_ID) ".
+				"WHERE user_status='Aktiv' OR user_status='Inaktiv' OR user_status='Gesperrt' ".
 				"ORDER BY user_ID ASC ";
-				
 	// Abfrage abschicken und Ergebnis entgegennehmen
 	$result	=	$db->query( $sql );
 	
@@ -649,7 +649,7 @@ function DeleteUser( $db, $user_ID)
 {
 	
 	// Benutzerdaten einfügen
-	$sql	=	"DELETE FROM tse_user ".
+	$sql	=	"UPDATE tse_user SET user_status='Gelöscht' ".
 				"WHERE user_ID = '$user_ID'";
 			
 	// Abfrage abschicken und Benutzer Aktualisieren
@@ -672,15 +672,91 @@ function DeleteUser( $db, $user_ID)
 }
 
 
+/* ***************************************************************************************************************
+  UpdateAdress ( $db,$pos_ID,$pos_companyname,$pos_address,$pos_plz,$pos_place)
+
+  @brief 		Aktualisiert die Adresse
+  
+  @function		Aktualisiert die Adresse über ein SQL Statement mit den vorher übergeben Werten an
+
+  @param 		$db	eine Datenbankverbindung
+
+  @return 		ein true im Erfolgsfall, sonst ein false
+**************************************************************************************************************** */
+
+function UpdateAdress( $db,$pos_ID,$pos_companyname,$pos_address,$pos_plz,$pos_place)
+{
+	// Benutzerdaten einfügen
+	$sql	=	"UPDATE tse_position SET pos_companyname='$pos_companyname', pos_address='$pos_address', pos_plz='$pos_plz', pos_place='$pos_place' ".
+				"WHERE pos_ID = '$pos_ID'";
+			
+	// Abfrage abschicken und Benutzer Aktualisieren
+	$result	=	$db->query( $sql );
+	
+	// Abfrage fehlerhaft
+	if ( $result === false )
+	{
+		return false;
+		// Interne Fehlernummer und MySQLi Fehlernummer und Beschreibung sowie fehlerhafte SQL-Abfrage in Logdatei schreiben
+		CreateErrorLogfile( 39, $db->connect_errno, $db->connect_error, $sql);
+		// Weiterleitung zur Fehlerseite
+		header("location: error.php?error=200");
+	}
+	else				
+	{	
+		$GLOBALS['errstr'] = "Sie haben die Adresse erfolgreich geändert!";
+		return true;
+	}
+}
+
+
+/* ***************************************************************************************************************
+  GetAdress( $db, $pos_ID )
+
+  @brief 		holt die passende Adresse nach der ID
+
+  @param 		$db	 		Datenbankverbindung als Objekt der Klasse mysqli
+				$pos_ID		Die übergebene ID um die passende adresse in der Datenbank rauszusuchen
+				
+  @return 		ein Array mit allen relevanten Datensätzen von der Tabelle Device/Model/Status die in den Wartungsintervall fallen
+**************************************************************************************************************** */
+
+function GetAdress($db,$pos_ID)
+{
+	// alles relevanten Daten aus den Tabllen via Join holen
+	$sql	=	"SELECT pos_companyname, pos_address, pos_plz, pos_place ".
+				"FROM tse_position ".
+				"WHERE pos_ID = '$pos_ID' ";
+	
+	// Abfrage abschicken und Ergebnis entgegennehmen
+	$result	=	$db->query( $sql );
+	
+	// Abfrage fehlerhaft
+	if ( $result === false )
+	{
+		// Interne Fehlernummer und MySQLi Fehlernummer und Beschreibung sowie fehlerhafte SQL-Abfrage in Logdatei schreiben
+		CreateErrorLogfile( 23, $db->connect_errno, $db->connect_error, $sql);
+		// Weiterleitung zur Fehlerseite
+		header("location: error.php?error=200");
+	}
+	
+	
+	// Ergebnis vorhanden? Datensatz fetchen als  Associatives Array
+	$ds = $result->fetch_all(MYSQLI_ASSOC);
+	
+	return $ds;
+}
+
+
 
 /* ***************************************************************************************************************
   CheckUserEmail( $db, $email )
 
   @brief 		  	Überprüft ob eine E-Mail Adresse in der Datenbank bereits vorhanden ist
 
-  @param 		  	$db 	eine Datenbankverbindung
-					$email 	eine E-Mail Adresse als string
-					$error 	Fehlerausgabe ein- oder ausschalten
+  @param 		  	$db eine Datenbankverbindung
+					$email eine E-Mail Adresse als string
+					$error Fehlerausgabe ein- oder ausschalten
 
   @return 			eine true wenn E-Mail Adresse bereits vorhanden, ein false wenn E-Mail Adresse nicht vorhanden
 **************************************************************************************************************** */
@@ -932,19 +1008,18 @@ function UpdateUserPasswordByPasswordCode ( $db, $email, $password_code, $new_pa
   @brief 		Setzt den Passwort- Code und Zeitstempel für einen Benutzer
   
   @function		Setzt den Passwort- Code und Zeitstempel anhand einer E-Mail Adresse
-				Der Passwort Code wird vor dem abspeichern in der Datenbank gehashed
 
   @param 		$db	 		Datenbankverbindung als Objekt der Klasse mysqli
 				$email	 	Eine E-Mail Adresse als string
-				$rstring	Eine Zufälliger String
 
   @return 		true im Erfolgsfall, sonst false
 **************************************************************************************************************** */
 
-function SetPasswordCodeAndTime( $db, $email, $rstring )
+function SetPasswordCodeAndTime( $db, $email )
 {
+	$date = date('c');
+	$rstring = RandomString();
 	$pwcode = false;
-	$rstring = sha1( $rstring );
 	
 	// Ein Objekt vom Typ mysqli_stmt
 	$prepstmt = $db->stmt_init();
@@ -954,14 +1029,14 @@ function SetPasswordCodeAndTime( $db, $email, $rstring )
 	{
 		// SQL-Abfrage erstellen und Platzhalter für Prepared Statements setzen
 		// Passwort- Code und Zeitstempel setzen
-		$sql 	= 	"UPDATE tse_user SET password_code=?, password_time=NOW() WHERE user_email =?";
+		$sql 	= 	"UPDATE tse_user SET password_code=?, password_time=? WHERE user_email =?";
 		$result	=	$db->query( $sql );
 
 		// SQL-Abfrage mit Prepared Statement durchführen
 		if( $prepstmt->prepare( $sql ) )
 		{
 			// Entsprechende Daten an die Platzhalter binden
-			$prepstmt->bind_param("ss", $rstring, $email);
+			$prepstmt->bind_param("sss", $rstring, $date, $email);
 
 			// Das Prepared Statement ausführen
 			if( !$prepstmt->execute() )
@@ -993,18 +1068,17 @@ function SetPasswordCodeAndTime( $db, $email, $rstring )
 /* ***************************************************************************************************************
   GetPasswordCodeAndTime( $db, $email)
 
-  @brief 		Holt falls vorhanden einen Passwort- Code und den dazugehörigen Zeitstempel einens Benutzers
+  @brief 		Holt einen bereits vorhandenen Passwort- Code einens Benutzers
   
   @function		Überprüft Passwort- Code und Zeit auf NULL
   
   @param 		$db	 		Datenbankverbindung als Objekt der Klasse mysqli
 				$email	 	Eine E-Mail Adresse als string
-				$error 		Fehlerausgabe ein- oder ausschalten
 
   @return 		einen Passwort-Code als String, false wenn Code oder Zeitstempel nicht vorhanden
 **************************************************************************************************************** */
 
-function GetPasswordCodeAndTime( $db, $email, $error=true )
+function GetPasswordCodeAndTime( $db, $email )
 {
 	// Ein Objekt vom Typ mysqli_stmt
 	$prepstmt = $db->stmt_init();
@@ -1043,10 +1117,7 @@ function GetPasswordCodeAndTime( $db, $email, $error=true )
 			// Passwort- Code und Zeitstempel vorhanden
 			$code = $ds['password_code'];
 			$time = $ds['password_time'];
-			if( $error === true)
-			{
-				$GLOBALS['errstr'] = ErrorByNumber( 115 );
-			}
+			$GLOBALS['errstr'] = ErrorByNumber( 115 );
 		}
 	}
 	else
@@ -1058,62 +1129,6 @@ function GetPasswordCodeAndTime( $db, $email, $error=true )
 	}
 	
 	return array( $code, $time );
-}
-
-/* ***************************************************************************************************************
-  DeletePasswordCodeAndTime( $db, $email)
-
-  @brief 		Löscht den Passwort- Code und den dazugehörigen Zeitstempel einens Benutzers
-  
-  @function		Setzt die Datenbankfelder auf NULL
-  
-  @param 		$db	 		Datenbankverbindung als Objekt der Klasse mysqli
-				$email	 	Eine E-Mail Adresse als string
-
-  @return 		ein true bei Erfolg, sonst ein false
-**************************************************************************************************************** */
-
-function DeletePasswordCodeAndTime( $db, $email)
-{
-	$pwcode = false;
-	
-	// Ein Objekt vom Typ mysqli_stmt
-	$prepstmt = $db->stmt_init();
-	
-	// Passwort- Code und Zeitstempel holen
-	$sql	=	"UPDATE tse_user SET password_code=NULL, password_time=NULL ".
-				"WHERE user_email =?";
-	
-	// SQL-Abfrage mit Prepared Statement durchführen
-	if( $prepstmt->prepare( $sql ) )
-	{
-		// Entsprechende Daten an die Platzhalter binden
-		$prepstmt->bind_param("s", $email);
-
-		// Das Prepared Statement ausführen
-		if( !$prepstmt->execute() )
-		{
-			// Interne Fehlernummer und MySQLi Fehlernummer und Beschreibung sowie fehlerhafte SQL-Abfrage in Logdatei schreiben
-			CreateErrorLogfile( 39, 'Execute fehlgeschlagen!',$db->prepstmt_errno, $db->prepstmt_error, $sql);
-			// Weiterleitung zur Fehlerseite
-			header("location: error.php?error=200");
-		}
-		else
-		{
-			$pwcode = true;
-		}
-		// Das Prepared Statement beenden
-		$prepstmt->close();
-	}
-	else
-	{
-		// Interne Fehlernummer und MySQLi Fehlernummer und Beschreibung sowie fehlerhafte SQL-Abfrage in Logdatei schreiben
-		CreateErrorLogfile( 39, 'Prepare fehlgeschlagen!',$db->connect_errno, $db->connect_error, $sql);
-		// Weiterleitung zur Fehlerseite
-		header("location: error.php?error=200");
-	}
-	
-	return $pwcode;
 }
 
 /* ***************************************************************************************************************

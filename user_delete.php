@@ -17,22 +17,23 @@ $db = dbconnect( $_SESSION['group_ID'] );			// Datenbankverbindung aufbauen
 CheckLogin( $db );									// Login Status überprüfen
 
 // Überprüfung ob der Submit-Button gedrückt wurde
-
+if(isset($_POST["submit"]))
+{
+	// wenn Ja gedrückt Benutzer löschen(Status ändern)
 	if( $_POST["submit"] === "Ja" )
 		{
-			// wenn Ja gedrückt Benutzer löschen
 			DeleteUser( $db, $_SESSION['delete_userID']);
 			// Variable delete_userID frei machen
 			$_SESSION['delete_userID'] = NULL;
 		}
+	//	wenn Nein gedrückt zurück zur Übersicht User
 	if(($_POST["submit"]) === "Nein")
 	{
-		// zurück zur Übersicht User
 		header("location: user_main.php?");
 		// Variable delete_userID frei machen
 		$_SESSION['delete_userID'] = NULL;
 	}
-
+}
 
 
 // User Id aus der tabelle via Post in eine lokale Variable speichern um damit weiter zu arbeiten
